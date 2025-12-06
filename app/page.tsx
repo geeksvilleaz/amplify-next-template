@@ -26,8 +26,20 @@ export default function App() {
   }, []);
 
   function createTodo() {
+    const content = window.prompt("Todo content");
+
+    // Validate input
+    if (!content || !content.trim()) {
+      return; // User cancelled or entered empty string
+    }
+
+    if (content.length > 500) {
+      alert("Content too long (max 500 characters)");
+      return;
+    }
+
     client.models.Todo.create({
-      content: window.prompt("Todo content"),
+      content: content.trim(),
     });
   }
 

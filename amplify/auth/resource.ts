@@ -8,4 +8,15 @@ export const auth = defineAuth({
   loginWith: {
     email: true,
   },
+  multifactor: {
+    mode: 'OPTIONAL',
+    totp: true,
+  },
+  userAttributes: {
+    email: {
+      required: true,
+      mutable: false,
+    },
+  },
+  accountRecovery: 'EMAIL_ONLY',
 });
